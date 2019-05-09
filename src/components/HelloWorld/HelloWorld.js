@@ -9,4 +9,4 @@ const HelloWorld = () => {
 	)
 }
 
-module.exports = HelloWorld;
+export default HelloWorld;
