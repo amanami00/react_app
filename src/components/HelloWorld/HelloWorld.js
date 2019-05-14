@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './HelloWorld.scss';
+import LifeCycle from './Lifecycle';
 
 export class HelloWorld extends Component {
     constructor(props) {
@@ -8,6 +9,30 @@ export class HelloWorld extends Component {
             count: 0,
             name: ''
         };
+    }
+
+    /* eslint-disable no-console */
+    componentWillMount() {
+        console.log('componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('nextProps', nextProps);
+        console.log('nextState', nextState);
+        console.log('shouldComponentUpdate');
+        return true;
+    }
+
+    componentWillUpdate() {
+        console.log('componentWillUpdate');
+    }
+
+    componentDidUpdate() {
+        console.log('componentDidUpdate');
     }
 
     handleAddCount = () => {
@@ -26,17 +51,25 @@ export class HelloWorld extends Component {
         const { count, name } = this.state;
         return (
             <div className="Hello">
-                <a>Totle clicked:
-                    <b>{ count }</b>
-                </a>
-                <button type="button" onClick={ this.handleAddCount }>Click me</button>
-                Please Add Your Name:
-                <input
-                    type="text"
-                    value={ name }
-                    onChange={ this.handleAddName }
-                />
-                Your Name is: {name}
+                <div className="Hello-Text">
+                    <button
+                        type="button"
+                        className="Hello-Button"
+                        onClick={ this.handleAddCount }
+                    >
+                        Click me
+                    </button>
+                </div>
+                <div className="Hello-Text">
+                    <span>Please Enter Your Name:</span>
+                    <input
+                        className="Hello-Text-Box"
+                        type="text"
+                        value={ name }
+                        onChange={ this.handleAddName }
+                    />
+                </div>
+                <LifeCycle count={ count } name={ name } />
             </div>
         );
     }
