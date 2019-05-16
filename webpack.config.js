@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
     SOURCE: path.join(__dirname, 'src')
@@ -8,7 +8,7 @@ const PATHS = {
 module.exports = {
     entry: path.join(PATHS.SOURCE, 'index.js'),
     output: {
-        path: __dirname + '/build',
+        path: `${__dirname}/build`,
         filename: 'bundle.js'
     },
     module: {
@@ -17,7 +17,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
+                    loader: 'babel-loader'
                 }
             },
             {
