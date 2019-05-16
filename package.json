@@ -2,23 +2,34 @@
     "name": "react_app",
     "version": "1.0.0",
     "description": "",
+    "author": "",
+    "license": "ISC",
     "main": "index.js",
-    "scripts": {
-        "start": "webpack-dev-server --mode development --open --port 3001",
-        "build": "webpack --mode production"
-    },
     "keywords": [
         "react from scratch"
     ],
-    "author": "",
-    "license": "ISC",
+    "scripts": {
+        "start": "webpack-dev-server --mode development --open --port 3001",
+        "build": "webpack --mode production",
+        "lint": "eslint $npm_package_config_jslintables",
+        "lint:fix": "eslint --fix $npm_package_config_jslintables"
+    },
+    "config": {
+        "jslintables": "src webpack.config.js"
+    },
     "devDependencies": {
         "babel-core": "^6.26.3",
+        "babel-eslint": "^10.0.1",
         "babel-loader": "^7.1.5",
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-1": "^6.24.1",
         "css-loader": "^0.28.11",
+        "eslint": "^5.16.0",
+        "eslint-config-airbnb": "^17.1.0",
+        "eslint-plugin-import": "^2.17.2",
+        "eslint-plugin-jsx-a11y": "^6.2.1",
+        "eslint-plugin-react": "^7.13.0",
         "html-webpack-plugin": "^3.2.0",
         "node-sass": "^4.12.0",
         "sass-loader": "^7.1.0",
