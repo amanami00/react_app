@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import LifeCycle from './Lifecycle';
+import { countIncrement, addName } from '../../actions/hello-world-actions';
 
-export class HelloWorld extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            count: 0,
-            name: ''
-        };
-    }
 
-    handleAddCount = () => {
-        this.setState({
-            count: this.state.count + 1
-        });
+class HelloWorld extends Component {
+
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+        count: PropTypes.number,
+        name: PropTypes.string
     };
 
-    handleAddName = (event) => {
-        this.setState({
-            name: event.target.value
-        });
-    }
+    handleAddCount = () => {
+        const { count, dispatch } = this.props;
+        return dispatch(countIncrement(count));
+    };
+
+    handleAddName = event => this.props.dispatch(addName(event.target.value));
 
     render() {
-        const { count, name } = this.state;
+        const { count, name } = this.props;
         return (
             <div className="Hello">
                 <div className="Hello-Text">
@@ -50,4 +48,6 @@ export class HelloWorld extends Component {
     }
 }
 
-export default HelloWorld;
+const mapStateToProps = ({ helloWorld: { count, name } }) => ({ count, name });
+
+export default connect(mapStateToProps)(HelloWorld);
