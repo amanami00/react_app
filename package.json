@@ -11,7 +11,9 @@
     "scripts": {
         "start": "webpack-dev-server --mode development --open --port 3001",
         "build": "webpack --mode production",
-        "lint": "eslint $npm_package_config_jslintables",
+        "lint": "yarn lint:css && yarn lint:js",
+        "lint:css": "stylelint 'src/**/*.scss'",
+        "lint:js": "eslint $npm_package_config_jslintables",
         "lint:fix": "eslint --fix $npm_package_config_jslintables"
     },
     "config": {
@@ -31,9 +33,12 @@
         "eslint-plugin-jsx-a11y": "^6.2.1",
         "eslint-plugin-react": "^7.13.0",
         "html-webpack-plugin": "^3.2.0",
+        "import-glob-loader": "^1.1.0",
         "node-sass": "^4.12.0",
         "sass-loader": "^7.1.0",
         "style-loader": "^0.23.1",
+        "stylelint": "^10.0.1",
+        "stylelint-config-standard": "^18.3.0",
         "webpack": "^4.30.0",
         "webpack-cli": "^3.3.2",
         "webpack-dev-server": "^3.3.1"
