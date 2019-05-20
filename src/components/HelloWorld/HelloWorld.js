@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './HelloWorld.scss';
 
 export class HelloWorld extends Component {
     constructor(props) {
@@ -26,17 +25,34 @@ export class HelloWorld extends Component {
         const { count, name } = this.state;
         return (
             <div className="Hello">
-                <a>Totle clicked:
-                    <b>{ count }</b>
-                </a>
-                <button type="button" onClick={ this.handleAddCount }>Click me</button>
-                Please Add Your Name:
-                <input
-                    type="text"
-                    value={ name }
-                    onChange={ this.handleAddName }
-                />
-                Your Name is: {name}
+                <div className="Hello-Text">
+                    <button
+                        type="button"
+                        className="Hello-Button"
+                        onClick={ this.handleAddCount }
+                    >
+                        Click me
+                    </button>
+                </div>
+                <div className="Hello-Text">
+                    <span>Please Enter Your Name:</span>
+                    <input
+                        className="Hello-Text-Box"
+                        type="text"
+                        value={ name }
+                        onChange={ this.handleAddName }
+                    />
+                </div>
+                <div className="Hello-Text">
+                    <span>Totle clicked:
+                        <b>{count}</b>
+                    </span>
+                </div>
+                <div className="Hello-Text">
+                    <span>Your Name is:
+                        <b>{name}</b>
+                    </span>
+                </div>
             </div>
         );
     }
