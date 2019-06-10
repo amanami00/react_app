@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LifeCycle from './Lifecycle';
 
 export class HelloWorld extends Component {
     constructor(props) {
@@ -43,16 +44,7 @@ export class HelloWorld extends Component {
                         onChange={ this.handleAddName }
                     />
                 </div>
-                <div className="Hello-Text">
-                    <span>Totle clicked:
-                        <b>{count}</b>
-                    </span>
-                </div>
-                <div className="Hello-Text">
-                    <span>Your Name is:
-                        <b>{name}</b>
-                    </span>
-                </div>
+                <LifeCycle count={ count } name={ name } />
             </div>
         );
     }
