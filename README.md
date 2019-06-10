@@ -1,1 +1,1 @@
-# react_app
+# React app from scratch
