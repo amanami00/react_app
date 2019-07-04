@@ -1,11 +1,11 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PATHS = {
     SOURCE: path.join(__dirname, 'src')
 };
-var extractSass = new ExtractTextPlugin({
+const extractSass = new ExtractTextPlugin({
     filename: 'index.css',
 });
 
@@ -13,7 +13,8 @@ module.exports = {
     entry: path.join(PATHS.SOURCE, 'index.js'),
     output: {
         path: `${__dirname}/build`,
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -32,6 +33,9 @@ module.exports = {
                 })
             }
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     plugins: [
         new HtmlWebPackPlugin({
